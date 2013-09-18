@@ -2,5 +2,9 @@
 #Main entry point of the application
 application = angular.module('application', [])
 
-$scope, $http <~ application.controller 'appCtrl' 
-$scope.status = 'ok'
+controller-init = ($scope, $http) ~>
+        $scope.status = 'ok'
+
+# Remember to DI in each controller...
+application.controller 'appCtrl', [ "$scope", "$http", controller-init ]
+
